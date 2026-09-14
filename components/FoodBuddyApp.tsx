@@ -25,8 +25,9 @@ import {
   Utensils,
   WalletCards,
   X,
+  type LucideIcon,
 } from "lucide-react";
-import { useEffect, useState, type ButtonHTMLAttributes, type ComponentType, type FormEvent } from "react";
+import { useEffect, useState, type ButtonHTMLAttributes, type FormEvent } from "react";
 import { DEMO_CANDIDATES, DEPARTMENT_OPTIONS, INTEREST_OPTIONS } from "@/lib/mock-data";
 import { createInitialState, loadState, saveState } from "@/lib/storage";
 import type {
@@ -60,7 +61,7 @@ type View =
   | "noResponse";
 
 type RequestDraft = Omit<MealRequest, "id" | "createdAt">;
-type IconType = ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+type IconType = LucideIcon;
 
 const locations: Location[] = ["九食堂", "十食堂", "十一食堂", "十二食堂", "金鹰", "学则路", "其他"];
 const dietaryOptions: Dietary[] = ["无", "素食", "清真", "不吃辣", "其他"];
