@@ -135,11 +135,15 @@ function findCandidate(
   rejectedIds: string[],
   blockedIds: string[],
 ) {
+  const requestedOffset = (new Date(request.mealTime).getTime() - Date.now()) / (60 * 1000);
   const options = DEMO_CANDIDATES.filter((candidate) => {
     if (rejectedIds.includes(candidate.id) || blockedIds.includes(candidate.id)) {
       return false;
     }
     if (request.location !== "其他" && !candidate.locations.includes(request.location)) {
+      return false;
+    }
+    if (!Number.isFinite(requestedOffset) || requestedOffset < candidate.timeWindow[0] || requestedOffset > candidate.timeWindow[1]) {
       return false;
     }
     if (request.location === "其他" && !candidate.locations.includes("其他")) {

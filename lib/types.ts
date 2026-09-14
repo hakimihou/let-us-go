@@ -47,6 +47,7 @@ export interface Candidate {
   grade: string;
   avatarColor: string;
   locations: Location[];
+  timeWindow: [number, number];
   diet: Dietary;
   duration: MealDuration;
   statusText: string;
